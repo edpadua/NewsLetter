@@ -4,7 +4,11 @@ import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
+
+const PageContainer = tw.div`
+flex min-h-screen flex-col items-center px-16
+`;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +26,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        {children}
+        <PageContainer>{children}</PageContainer>
+
         <Footer />
       </body>
     </html>

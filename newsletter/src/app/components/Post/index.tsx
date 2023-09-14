@@ -30,7 +30,10 @@ function Post() {
              <PostTitle>Título</PostTitle>
         </PostHeader>
         <PostContent>
-            
+            <p>
+            rewr eetew twtrt trtr rtwrt fgfg fgfgf
+            dgfgd fgdfg gdfgd fgdfg 
+            </p>
         </PostContent>
     </PostCard>
   )
