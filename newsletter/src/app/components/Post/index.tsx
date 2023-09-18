@@ -1,6 +1,8 @@
-import React from 'react'
+import React from "react";
 
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
+
+import getSinglePost from "../../controllers/getSinglePost";
 
 const PostCard = tw.div`
     flex
@@ -23,20 +25,24 @@ const PostContent = tw.div`
     
 `;
 
-function Post() {
+
+interface Props {
+  id: string
+} 
+
+async function Post({ id }: Props) {
+  const post = await getSinglePost(id);
+
   return (
     <PostCard>
-        <PostHeader>
-             <PostTitle>Título</PostTitle>
-        </PostHeader>
-        <PostContent>
-            <p>
-            rewr eetew twtrt trtr rtwrt fgfg fgfgf
-            dgfgd fgdfg gdfgd fgdfg 
-            </p>
-        </PostContent>
+      <PostHeader>
+        <PostTitle>post.title</PostTitle>
+      </PostHeader>
+      <PostContent>
+        <p>post.content</p>
+      </PostContent>
     </PostCard>
-  )
+  );
 }
 
-export default Post
+export default Post;
