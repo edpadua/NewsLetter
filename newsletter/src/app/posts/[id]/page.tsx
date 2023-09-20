@@ -4,10 +4,14 @@ import tw from "tailwind-styled-components";
 
 import Post from "../../components/Post/index"
 
-function PostPage(id:string) {
+function PostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   return (
     <>
-       <Post id={id}/>
+       <Post id={params.id}/>
     </>
   )
 }

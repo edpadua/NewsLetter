@@ -4,6 +4,7 @@ export default async function getSinglePost(id:string) {
         cache: "no-store",
       });
       const post = await response.json();
+      console.log("post",post.data);
       return post.data;
     } catch (error) {
       console.log(error);

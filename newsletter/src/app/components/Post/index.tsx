@@ -1,8 +1,15 @@
+'use client'
+
 import React from "react";
 
 import tw from "tailwind-styled-components";
 
+import {Post} from "../../typesdata/typesdata";
+
 import getSinglePost from "../../controllers/getSinglePost";
+
+import { useState, useEffect } from "react";
+
 
 const PostCard = tw.div`
     flex
@@ -30,17 +37,43 @@ interface Props {
   id: string
 } 
 
-async function Post({ id }: Props) {
-  const post = await getSinglePost(id);
+function Post({ id }: Props) {
+  
+  const [post, setPost]=useState<Post|null>(null);
+  
+  //const post = await getSinglePost(id);
+
+
+  
+
+  useEffect(() => {
+
+    const getSinglePost= async (id:string) => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/posts/${id}`, {
+          cache: "no-store",
+        });
+        const post = await response.json();
+        console.log("post",post.data);
+        setPost(post);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+      getSinglePost(id);
+      
+   
+
+  }, []);
 
   return (
     <PostCard>
-      <PostHeader>
-        <PostTitle>post.title</PostTitle>
+      {/**<PostHeader>
+        <PostTitle>{post.title}</PostTitle>
       </PostHeader>
       <PostContent>
-        <p>post.content</p>
-      </PostContent>
+        <p>{post.content}</p>
+  </PostContent>**/}
     </PostCard>
   );
 }

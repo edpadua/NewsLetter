@@ -2,7 +2,8 @@ export type Post={
     _id: string;
     title: string;
     author: string;
-    date: string;
     content: string;
-
+    thumbnail: string;
+    status: string;
+    date: string;
 };
