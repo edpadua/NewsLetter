@@ -1,47 +1,46 @@
-import React, {useState, useEffect} from "react";
+"use client";
 
+import React, { useState, useEffect } from "react";
 import PostThumb from "../PostThumb";
 
-import {Post} from "../../typesdata/typesdata";
+import { Post } from "../../typesdata/typesdata";
+
+import axios, { AxiosResponse } from "axios";
+
+import tw from "tailwind-styled-components";
+
+const List = tw.div`
+grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full container gap-2 mt-16 
+`;
 
 function PostList() {
-
-  const [postList, setPostList]=useState<Post[]|null>(null);
-
+  const [posts, setPostList] = useState<Post[]>([]);
 
   useEffect(() => {
-
-    const getPostList= async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/posts/', {
-          cache: "no-store",
+    const getPostList = () => {
+      const url = "http://localhost:3000/api/posts/";
+      axios
+        .get(url)
+        .then((res) => {
+          setPostList(res.data.posts);
+          console.log("res.data", res.data.posts);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        const postList = await response.json();
-        console.log("postList",response);
-        setPostList(postList);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getPostList();
-      
-   
+    };
 
+    getPostList();
   }, []);
 
-
   return (
-    <div className="flex">
-      <div className="w-1/3">
-        <PostThumb />
-      </div>
-      <div className="w-1/3">
-        <PostThumb />
-      </div>
-      <div className="w-1/3">
-        <PostThumb />
-      </div>
-    </div>
+    <List>
+      {posts ? (
+        posts.map((post: Post, index) => <PostThumb key={index} {...post} />)
+      ) : (
+        <p>Não encontrados</p>
+      )}
+    </List>
   );
 }
 

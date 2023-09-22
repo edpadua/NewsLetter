@@ -33,6 +33,7 @@ const PostContent = tw.div`
 `;
 
 
+
 interface Props {
   id: string
 } 

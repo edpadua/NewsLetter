@@ -1,7 +1,7 @@
 import { isPostfixUnaryExpression } from "typescript";
 import mongoDBConnect from "../../libs/db";
 import PostModel from "../../models/post";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 {
   /*export async function GET(request: Request) {
@@ -37,9 +37,10 @@ export async function GET(request: Request) {
     await mongoDBConnect();
     //get the data using the model
     const posts = await PostModel.find();
+  
     console.log("posts", posts);
     return NextResponse.json(
-      { message: "Hello, Next.js Version 13!", data: isPostfixUnaryExpression },
+      { message: "Hello, Next.js Version 13!", posts },
       { status: 200 }
     );
   } catch (error) {
@@ -94,10 +95,10 @@ export async function POST(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request:NextRequest) {
   try {
     //Get the Id of the course
-    const id = request.nextUrl.searchParams.get("id");
+    const id = request.url.searchParams.get("id");
     //Connect to db
     await mongoDBConnect();
     //Use the model to delete

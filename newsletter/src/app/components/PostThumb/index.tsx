@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Post } from "@/app/typesdata/typesdata";
+
 import tw from "tailwind-styled-components";
 
 const PostThumbContainer = tw.div`
@@ -28,15 +30,23 @@ pb-4
 
 import { Button } from "@/GlobalStyles";
 
-function PostThumb() {
+function PostThumb({
+  title,
+  author,
+  content,
+  thumbnail,
+  status,
+  date,
+  createdAt,
+  updatedAt
+}: Post) {
   return (
     <PostThumbContainer>
       <div>
-        <PostThumbTitle>Title</PostThumbTitle>
+        <PostThumbTitle>{title}</PostThumbTitle>
       </div>
       <PostSampleContainer>
-        <PostSample>rewr eetew twtrt trtr rtwrt fgfg fgfgf
-            dgfgd fgdfg gdfgd fgdfg 
+        <PostSample>{content}
         </PostSample>
       </PostSampleContainer>
       <div>

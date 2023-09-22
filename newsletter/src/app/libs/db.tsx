@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
+const uri=process.env.NEXT_MONGODB_URI;
+ 
 export default async function mongoDBConnect() {
     try {
-      await mongoose.connect("mongodb+srv://edpadua:GLCHMPKtU6ibE7aY@cluster0.ektk3uu.mongodb.net/?retryWrites=true&w=majority");
+      await mongoose.connect(uri|| '');
       console.log("Connection Successful");
     } catch (error) {
       console.log(error);

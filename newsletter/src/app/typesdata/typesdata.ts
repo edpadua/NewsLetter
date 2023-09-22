@@ -6,4 +6,6 @@ export type Post={
     thumbnail: string;
     status: string;
     date: string;
+    createdAt: Date;
+    updatedAt: Date;
 };
