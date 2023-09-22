@@ -4,6 +4,8 @@ import { Post } from "@/app/typesdata/typesdata";
 
 import tw from "tailwind-styled-components";
 
+import Link from "next/link";
+
 const PostThumbContainer = tw.div`
 m-4
 `;
@@ -31,6 +33,7 @@ pb-4
 import { Button } from "@/GlobalStyles";
 
 function PostThumb({
+  _id,
   title,
   author,
   content,
@@ -50,7 +53,7 @@ function PostThumb({
         </PostSample>
       </PostSampleContainer>
       <div>
-        <ButtonOne>Ler mais</ButtonOne>
+      <Link href={`/posts/${_id}`}><ButtonOne>Ler mais</ButtonOne></Link>
       </div>
     </PostThumbContainer>
   );

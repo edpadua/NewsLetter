@@ -1,82 +1,90 @@
-'use client'
+"use client";
 
 import React from "react";
 
 import tw from "tailwind-styled-components";
 
-import {Post} from "../../typesdata/typesdata";
+import { Post } from "../../typesdata/typesdata";
 
 import getSinglePost from "../../controllers/getSinglePost";
 
 import { useState, useEffect } from "react";
 
+import axios, { AxiosResponse } from "axios";
 
 const PostCard = tw.div`
-    flex
+   
     w-full 
     
 `;
 
 const PostHeader = tw.div`
+     py-6
+    
+`;
+
+const PostDate = tw.h2`
+     
+    
+`;
+
+const PostAuthor = tw.h2`
      
     
 `;
 
 const PostTitle = tw.h1`
      
-    
+font-bold text-lg
 `;
 
 const PostContent = tw.div`
-     
+
     
 `;
 
-
-
 interface Props {
-  id: string
-} 
+  id: string;
+}
 
 function Post({ id }: Props) {
-  
-  const [post, setPost]=useState<Post|null>(null);
-  
+  const [post, setPost] = useState<Post | null>(null);
+
   //const post = await getSinglePost(id);
 
-
-  
-
   useEffect(() => {
-
-    const getSinglePost= async (id:string) => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/posts/${id}`, {
-          cache: "no-store",
+    const getSinglePost = (id: string) => {
+      const url = `http://localhost:3000/api/posts/${id}`;
+      axios
+        .get(url)
+        .then((res) => {
+          setPost(res.data.post);
+          console.log("res.data", res.data.post);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        const post = await response.json();
-        console.log("post",post.data);
-        setPost(post);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-      getSinglePost(id);
-      
-   
+    };
 
+    getSinglePost(id);
   }, []);
 
-  return (
-    <PostCard>
-      {/**<PostHeader>
-        <PostTitle>{post.title}</PostTitle>
-      </PostHeader>
-      <PostContent>
-        <p>{post.content}</p>
-  </PostContent>**/}
-    </PostCard>
-  );
+  if (post) {
+    return (
+      <PostCard>
+        <PostHeader>
+          <PostTitle>{post.title}</PostTitle>
+          <PostDate>{post.date}</PostDate>
+          <PostAuthor>Por:{post.author}</PostAuthor>
+        </PostHeader>
+        <PostContent>
+          <p>{post.content}</p>
+        </PostContent>
+      </PostCard>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 export default Post;
