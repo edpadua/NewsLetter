@@ -10,7 +10,7 @@ import axios, { AxiosResponse } from "axios";
 import tw from "tailwind-styled-components";
 
 const List = tw.div`
-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full container gap-2 mt-16 
+grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full container gap-4 mt-16 
 `;
 
 function PostList() {

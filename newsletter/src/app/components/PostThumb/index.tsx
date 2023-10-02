@@ -7,7 +7,7 @@ import tw from "tailwind-styled-components";
 import Link from "next/link";
 
 const PostThumbContainer = tw.div`
-m-4
+ bg-white p-4 mb-4
 `;
 
 const PostThumbTitle = tw.h1`
@@ -19,7 +19,7 @@ bg-blue-700 text-white  hover:bg-blue-600  px-4 py-2 rounded-xl text-base
 `;
 
 const PostSample = tw.p`
-text-base
+text-base line-clamp-3
 `;
 
 const PostSampleContainer = tw.div`

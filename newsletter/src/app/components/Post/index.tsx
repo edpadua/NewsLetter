@@ -19,7 +19,7 @@ const PostCard = tw.div`
 `;
 
 const PostHeader = tw.div`
-     py-6
+     py-6 text-slate-800 font-semibold
     
 `;
 
@@ -35,7 +35,7 @@ const PostAuthor = tw.h2`
 
 const PostTitle = tw.h1`
      
-font-bold text-lg
+font-bold text-3xl pb-4
 `;
 
 const PostContent = tw.div`
@@ -74,8 +74,8 @@ function Post({ id }: Props) {
       <PostCard>
         <PostHeader>
           <PostTitle>{post.title}</PostTitle>
-          <PostDate>{post.date}</PostDate>
-          <PostAuthor>Por:{post.author}</PostAuthor>
+          <PostDate>{new Date(post.date).toLocaleDateString()}</PostDate>
+          <PostAuthor>Por: {post.author}</PostAuthor>
         </PostHeader>
         <PostContent>
           <p>{post.content}</p>

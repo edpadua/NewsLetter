@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import tw from "tailwind-styled-components";
 
 const PageContainer = tw.div`
-flex min-h-screen flex-col items-center px-16
+flex min-h-screen flex-col items-center px-16 bg-slate-50
 `;
 
 const inter = Inter({ subsets: ["latin"] });
