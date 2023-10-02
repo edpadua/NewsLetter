@@ -18,7 +18,7 @@ function PostList() {
 
   useEffect(() => {
     const getPostList = () => {
-      const url = "http://localhost:3000/api/posts/";
+      const url = `${process.env.NEXT_BASE_URL}api/posts/`;
       axios
         .get(url)
         .then((res) => {
