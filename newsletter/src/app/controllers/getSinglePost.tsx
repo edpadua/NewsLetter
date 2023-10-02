@@ -1,6 +1,7 @@
 export default async function getSinglePost(id:string) {
+    const url=process.env.NEXT_BASE_URL;
     try {
-      const response = await fetch(`http://localhost:3000/api/posts/${id}`, {
+      const response = await fetch(`${url}api/posts/${id}`, {
         cache: "no-store",
       });
       const post = await response.json();
