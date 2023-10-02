@@ -15,7 +15,7 @@ export async function GET() {
     console.log("posts", posts);
     return NextResponse.json(
       { message: "Hello, Next.js Version 13!", posts },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
