@@ -52,7 +52,7 @@ function Post({ id }: Props) {
 
   useEffect(() => {
     const getSinglePost = (id: string) => {
-      const url = `http://localhost:3000/api/posts/${id}`;
+      const url = `${process.env.NEXT_BASE_URL}api/posts/${id}`;
       axios
         .get(url)
         .then((res) => {
