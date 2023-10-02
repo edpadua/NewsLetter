@@ -7,7 +7,7 @@ import Post from  "../../components/Post/index";
 function PostPage() {
   return (
     <>
-       <Post/>
+       
     </>
   )
 }

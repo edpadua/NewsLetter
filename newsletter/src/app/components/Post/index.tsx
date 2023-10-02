@@ -50,8 +50,6 @@ interface Props {
 function Post({ id }: Props) {
   const [post, setPost] = useState<Post | null>(null);
 
-  //const post = await getSinglePost(id);
-
   useEffect(() => {
     const getSinglePost = (id: string) => {
       const url = `http://localhost:3000/api/posts/${id}`;
