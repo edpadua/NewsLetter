@@ -18,8 +18,7 @@ export async function GET(request:Request, {
         await mongoDBConnect();
         //get the data using the model
         const post = await PostModel.findById(id);
-        console.log("id", id);
-        console.log("post", post);
+       
         return NextResponse.json(
           { message: "Hello, Next.js Version 13!", post },
           { status: 200 }

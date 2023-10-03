@@ -33,7 +33,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     //Get the data from the request
-    const { title, author, content, thumbnail, status, date } =
+    const { title, author, content, thumbnail, status, date,createdAt,updatedAt } =
       await request.json();
     const newPost = {
       title,
@@ -42,6 +42,8 @@ export async function POST(request: Request) {
       thumbnail,
       status,
       date,
+      createdAt,
+      updatedAt,
     };
     console.log("newPost", newPost);
 
