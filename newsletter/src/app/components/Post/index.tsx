@@ -4,7 +4,7 @@ import React from "react";
 
 import tw from "tailwind-styled-components";
 
-import { Post } from "../../typesdata/typesdata";
+
 
 import { useApi } from "@/app/context/api.context";
 
