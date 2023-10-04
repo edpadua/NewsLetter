@@ -6,7 +6,7 @@ import tw from "tailwind-styled-components";
 
 import { Post } from "../../typesdata/typesdata";
 
-import getSinglePost from "../../controllers/getSinglePost";
+import { useApi } from "@/app/context/api.context";
 
 import { useState, useEffect } from "react";
 
@@ -48,22 +48,12 @@ interface Props {
 }
 
 function Post({ id }: Props) {
-  const [post, setPost] = useState<Post | null>(null);
+  
+
+  const {post,getSinglePost} = useApi();
 
   useEffect(() => {
-    const getSinglePost = (id: string) => {
-      const url = `/api/posts/${id}`;
-      axios
-        .get(url)
-        .then((res) => {
-          setPost(res.data.post);
-          console.log("res.data", res.data.post);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
+    
     getSinglePost(id);
   }, []);
 

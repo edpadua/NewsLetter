@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import tw from "tailwind-styled-components";
+import { ApiContextProvider } from './context/api.context';
+
+
 
 const PageContainer = tw.div`
 flex min-h-screen flex-col items-center px-16 bg-slate-50
@@ -23,6 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ApiContextProvider>
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
@@ -31,5 +35,6 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </ApiContextProvider>
   );
 }

@@ -9,3 +9,11 @@ export type Post={
     createdAt: Date;
     updatedAt: Date;
 };
+
+export type ApiContextType={
+    post:Post | null;
+    postList: Post[];
+    setPostList(postList: Post[]):void;
+    getPostList():void;
+    getSinglePost(id:string):void;
+  };
