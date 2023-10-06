@@ -37,3 +37,35 @@ export async function GET(request:Request, {
       }
   
 }
+
+
+export async function DELETE(request:Request, {
+  params
+}: {params:IParams}) {
+  try {
+    //Get the Id of the course
+    const {id} = params;
+    //Connect to db
+    await mongoDBConnect();
+    //Use the model to delete
+    await PostModel.findByIdAndDelete(id);
+    //return the response
+    return NextResponse.json(
+      {
+        message: "Post deleted Successfully",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Failed to Delete a Post",
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
+

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import { Post } from "../../typesdata/typesdata";
 
@@ -19,12 +19,17 @@ function PostAdminList() {
 
     const {postList,getPostList} = useApi();
 
+    useEffect(() => {
+
+        getPostList();
+      }, []);
+
   return (
     <List>
       {postList ? (
         postList.map((post: Post, index) => 
 
-            <PostAdminThumb key={index} {...post}/>
+            <PostAdminThumb key={index} post={post} index={index}/>
        )
       ) : (
         <p>Não encontrados</p>
