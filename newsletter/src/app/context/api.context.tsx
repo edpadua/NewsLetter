@@ -1,10 +1,10 @@
 "use client"
 
-import {Post, ApiContextType} from "../typesdata/typesdata"
+import {Post, ApiContextType, Inputs} from "../typesdata/typesdata"
 
 import { createContext, useContext, useState ,useEffect } from "react";
 
-import axios from "axios";
+import axios,{AxiosResponse} from "axios";
 
 const ApiContext = createContext<ApiContextType | null>(null);
 
@@ -49,8 +49,36 @@ export const ApiContextProvider = ({
           });
       };
 
+    const createPost = async (data:Inputs) =>{
+
+        try {
+            const date=new Date();
+            const post={
+                title:data.title,
+                author:"José das Couves",
+                content:data.content,
+                thumbnail:"http://imagem",
+                status: "published",
+                date:"2023-09-21",
+                createdAt: date,
+                updatedAt: date}
+     
+            console.log("Post",post);
+            const response: AxiosResponse<Post> = await axios.post("api/posts/", JSON.stringify(post),
+            {
+                headers: { 'Content-Type': 'application/json' },
+            
+            });
+            
+          } catch (error) {
+            console.log(error);
+          }
+    
+
+    }
+
     return (
-        <ApiContext.Provider value={{ postList, post, setPostList, getPostList, getSinglePost}}>
+        <ApiContext.Provider value={{ postList, post, setPostList, getPostList, getSinglePost,createPost}}>
             {children}
         </ApiContext.Provider>
 

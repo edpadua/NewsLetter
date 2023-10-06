@@ -16,4 +16,11 @@ export type ApiContextType={
     setPostList(postList: Post[]):void;
     getPostList():void;
     getSinglePost(id:string):void;
+    createPost(post:Inputs):void;
   };
+
+
+export type Inputs = {
+    title: string;
+    content: string;
+};

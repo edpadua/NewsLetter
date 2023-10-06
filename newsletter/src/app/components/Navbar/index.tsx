@@ -35,7 +35,7 @@ function Navbar() {
         <FaRegNewspaper style={{ fontSize: "40px", color: "#ffffff" }} />
         <MenuContainer>
           <Link href="/">Blog</Link>
-          <Link href="/admin">Admin</Link>
+          
         </MenuContainer>
       </NavContainer>
     </Nav>
