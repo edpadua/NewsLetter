@@ -29,8 +29,8 @@ type Props = {
 
     const {deletePost,getPostList} = useApi();
 
-    const handleDelete = (e) => {
-        e.preventDefault();
+    const handleDelete = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         deletePost(post._id,index);
       }
 
