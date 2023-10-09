@@ -10,6 +10,14 @@ export type Post={
     updatedAt: Date;
 };
 
+export type User={
+    _id: string;
+    name: string;
+    email: string;
+    password: string;
+    role:string;
+};
+
 export type ApiContextType={
     post:Post | null;
     postList: Post[];
@@ -24,4 +32,11 @@ export type ApiContextType={
 export type Inputs = {
     title: string;
     content: string;
+};
+
+
+export type InputsUser = {
+    name: string;
+    email: string;
+    password: string;
 };
