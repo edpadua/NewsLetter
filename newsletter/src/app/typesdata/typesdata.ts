@@ -26,6 +26,13 @@ export type ApiContextType={
     getSinglePost(id:string):void;
     createPost(post:Inputs):void;
     deletePost(id:string,index:number):void;
+    user: User | null;
+    userList: User[];
+    setUserList(userList: User[]):void;
+    getUserList():void;
+    getSingleUser(id:string):void;
+    createUser(user:InputsUser):void;
+    deleteUser(id:string,index:number):void;
   };
 
 

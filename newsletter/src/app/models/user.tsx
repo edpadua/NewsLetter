@@ -1,11 +1,13 @@
 import { Document, Schema, Types, model, models } from "mongoose";
 
+import bcrypt from 'bcrypt';
+
 export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
   role:string;
-  user: Types.ObjectId;
+
 }
 
 const UserSchema = new Schema<IUser>(
@@ -28,14 +30,29 @@ const UserSchema = new Schema<IUser>(
       enum: ["admin", "publisher"],
       default: "publisher",
     },
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    
   },
   
 );
 
-const UserModel = models.Post || model<IUser>("User", UserSchema);
+
+UserSchema.pre('save', async function() {
+    return new Promise( async (resolve, reject) => {
+        await bcrypt.genSalt(10, async (err, salt) => {
+            await bcrypt.hash(this.password, salt, async (err, hash) => {
+                if(err) {
+                    reject (err)
+                } else {
+                   this.password = hash;
+                }
+            });
+        });
+    })
+})
+
+
+
+
+const UserModel = models.User || model<IUser>("User", UserSchema);
 
 export default UserModel

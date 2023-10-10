@@ -17,6 +17,8 @@
     "@types/styled-components": "^5.1.27",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "mongodb": "^6.1.0",
@@ -34,6 +36,7 @@
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
+    "@types/bcrypt": "^5.0.0",
     "tailwind-styled-components": "^2.2.0"
   }
 }

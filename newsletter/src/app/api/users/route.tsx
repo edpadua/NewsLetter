@@ -47,9 +47,10 @@ export async function POST(request: Request) {
     await mongoDBConnect();
     //Use the Model to create
     await UserModel.create(newUser);
+    console.log("User created");
     return NextResponse.json(
       {
-        message: "Course created successfully",
+        message: "User created successfully",
         data: newUser,
       },
       { status: 201 }

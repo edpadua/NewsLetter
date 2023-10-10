@@ -33,14 +33,19 @@ function UserRegister() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<InputsUser> = async (data) => {
-    console.log("data", data);
+  const { createUser } = useApi();
 
-    reset({
-      name: "",
-      email: "",
-      password: "",
-    });
+  const onSubmit: SubmitHandler<InputsUser> = async (data) => {
+   
+    console.log("data", data);
+        createUser(data);
+        reset({
+            name: "",
+            email: "",
+            password: "",
+        });
+
+   
   };
 
   return (
