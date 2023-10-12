@@ -2,7 +2,7 @@ import { isPostfixUnaryExpression } from "typescript";
 import mongoDBConnect from "../../libs/db";
 import UserModel from "../../models/user";
 import { NextResponse, NextRequest } from "next/server";
-
+import bcrypt from 'bcrypt';
 
 
 export async function GET() {
@@ -20,7 +20,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json(
       {
-        message: "Failed to fetch users",
+        message: "Failed to fetchs users",
         error,
       },
       {
@@ -35,17 +35,21 @@ export async function POST(request: Request) {
     //Get the data from the request
     const { name, email, password, role } =
       await request.json();
+      const encryptedPassword = bcrypt.hashSync(password, 10);
+      console.log("encryptedPassword", encryptedPassword);
+      
     const newUser = {
-      name,
-      email,
-      password,
-      role,
+      name:name,
+      email:email,
+      password:encryptedPassword,
+      role:role,
     };
     console.log("newUser", newUser);
 
     // Connect to the DB
     await mongoDBConnect();
     //Use the Model to create
+    console.log("Connected");
     await UserModel.create(newUser);
     console.log("User created");
     return NextResponse.json(

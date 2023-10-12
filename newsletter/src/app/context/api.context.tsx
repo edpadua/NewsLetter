@@ -107,7 +107,7 @@ export const ApiContextProvider = ({
   };
 
   const getUserList = async () => {
-    const url = `api/user/`;
+    const url = "api/users/";
     axios
       .get(url)
       .then((res) => {
