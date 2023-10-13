@@ -47,3 +47,8 @@ export type InputsUser = {
     email: string;
     password: string;
 };
+
+export type InputsLogin = {
+    email: string;
+    password: string;
+};
