@@ -14,7 +14,7 @@
  
 ## About
 
-This project consists of a blog that lists the posts on its home page and allows you to read the content of each one by clicking.It's also possible to create and delete a post by a form.
+This project consists of a blog that lists the posts on its home page and allows you to read the content of each one by clicking. It's also possible to create and delete a post by a form.
 
 The main objective of this project was the development of a fullstack application, encompassing both the front end and the back end, using the Next.js framework. A Rest API to get, create and update blog posts with all endpoints ready to be accessed by the front end. For data persistence, MongoDB was used with the Mongoose ODM.
   On the front end, axios was also used to customize the Rest API, Tailwind Styled-Components, and Tailwind CSS for styles and the TypeScript language.
